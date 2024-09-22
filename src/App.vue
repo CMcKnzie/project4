@@ -3,12 +3,13 @@
 import AddIngredients from './components/AddIngredients.vue'
 import Balance from './components/Balance.vue';
 import Header from './components/Header.vue';
-import CostTracker from './components/CostTracker.vue';
 import IngredientList from './components/IngredientList.vue'
 
 import {ref, computed, onMounted} from 'vue'
 
 const ingredients = ref([])
+const rName = ref('')
+
 
 const sum = computed(() => {
   return ingredients.value.reduce((acc, x) => {
@@ -24,15 +25,8 @@ const inIn = computed(() => {
   },0)
 })
 
-const inOut = computed(() => {
-  return ingredients.value
-  .filter((x)=>x.amount<0)
-  .reduce((acc, x) => {
-      return acc+x.amount
-  },0)
-})
 
-const handleingredient = (ingredientData) => {
+const handleIngredient = (ingredientData) => {
   ingredients.value.push ({
   text: ingredientData.text,
   amount: ingredientData.amount, 
@@ -57,22 +51,25 @@ const saveToLocalStorage=() =>{
 }
 
 onMounted(() => {
-  const savedingredients = JSON.parse(localStorage.getItem('ingredients'))
-  if(savedingredients){
-    ingredients.value=savedingredients
+  const savedIngredients = JSON.parse(localStorage.getItem('ingredients'))
+
+  if(savedIngredients){
+    ingredients.value=savedIngredients
   }
+
 })
+
+
 
 </script>
 
 <template>
-  <Header></Header>
+  <Header :name="rName"></Header>
 
   <div class ="container">
       <Balance :total="sum"></Balance>
-      <Addingredients @ingredientSubmitted="handleIngredient"></Addingredients>
-      <IncomeExpenses :income="inIn" :expense="inOut"></IncomeExpenses>
-      <ingredientHistory :ingredients="ingredients" @ingredientDeleted="handleDelete"></ingredientHistory>
+      <AddIngredients @ingredientSubmitted="handleIngredient"></AddIngredients>
+      <IngredientList :ingredients="ingredients" @ingredientDeleted="handleDelete"></IngredientList>
 
     </div>
 

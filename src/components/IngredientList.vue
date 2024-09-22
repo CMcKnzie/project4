@@ -9,9 +9,10 @@ const props = defineProps ({
     }
 })
 
+
 const emit = defineEmits (['ingredientDeleted'])
 
-const deleteingredient = (id) => {
+const deleteIngredient = (id) => {
     emit('ingredientDeleted', id)
 }
 
@@ -19,12 +20,12 @@ const deleteingredient = (id) => {
 
 <template>
  
- <h3>History</h3>
+ <h3>Recipe List</h3>
  <ul class ="list" id="list">
     <li v-for="x in ingredients" v-bind:key="x.id"
     v-bind:class="x.amount < 0 ? 'minus' : 'plus'">
     {{ x.text }} <span> ${{ x.amount }}</span>
-    <button @click="deleteingredient(x.id)" class="delete-btn">X</button>
+    <button @click="deleteIngredient(x.id)" class="delete-btn">X</button>
 
     </li>
  </ul>

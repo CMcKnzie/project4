@@ -70,7 +70,7 @@ h4 {
 }
  
  
-.money {
+.in {
   font-size: 20px;
   letter-spacing: 1px;
   margin: 5px 0;
@@ -79,11 +79,6 @@ h4 {
  
 .in.plus {
   color: #2ecc71;
-}
- 
- 
-.in.minus {
-  color: #c0392b;
 }
  
  

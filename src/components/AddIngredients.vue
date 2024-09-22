@@ -26,16 +26,16 @@ const onSubmit =() =>{
     <h3>Add a new ingredient</h3>
     <form id="form" @submit.prevent="onSubmit">
         <div class= "form-control">
-            <label for="text">Enter ingredient</label>
-            <input type="text" id="text" v-model="text" placeholder="Enter ingredient">
+            <label for="text">Enter Ingredient</label>
+            <input type="text" id="text" v-model="text" placeholder="Enter Ingredient Name e.g. milk">
         </div>
 
         <div class= "form-control">
-            <label for="text">Enter ingredient Cost</label>
-            <input type="text" id="amount" v-model="amount" placeholder="Enter Negative Value for Expenses">
+            <label for="text">Enter Ingredient Cost</label>
+            <input type="text" id="amount" v-model="amount" placeholder="Ingredient Cost">
         </div>
 
-        <button class="btn">Add ingredient</button>
+        <button class="btn">Add Ingredient</button>
 
     </form>
 
